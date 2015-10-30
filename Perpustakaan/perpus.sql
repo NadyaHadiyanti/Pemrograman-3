@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 30 Okt 2015 pada 05.39
+-- Generation Time: 30 Okt 2015 pada 09.24
 -- Versi Server: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -77,18 +77,19 @@ INSERT INTO `buku` (`kode_buku`, `judul`, `pengarang`, `penerbit`, `tahun`) VALU
 --
 
 CREATE TABLE IF NOT EXISTS `login_admin` (
-  `id_admin` varchar(5) NOT NULL,
+  `id_admin` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(15) NOT NULL,
   `password` varchar(15) NOT NULL,
   PRIMARY KEY (`id_admin`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data untuk tabel `login_admin`
 --
 
 INSERT INTO `login_admin` (`id_admin`, `username`, `password`) VALUES
-('A123', 'NadyaHadiyanti', 'trafa12');
+(1, 'NadyaHadiyanti', 'trafa12'),
+(2, 'nadya', 'nadya12');
 
 -- --------------------------------------------------------
 

@@ -2,6 +2,8 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="btnYatidak">
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
@@ -53,7 +55,8 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
               <EmptySpace pref="16" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
@@ -66,10 +69,13 @@
               <EmptySpace pref="16" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -82,33 +88,36 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="txtNopinjam" linkSize="2" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="btnhapus" linkSize="5" min="-2" pref="87" max="-2" attributes="0"/>
+                                      <Component id="cbStatus" linkSize="2" min="-2" pref="110" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="txtNotrans" linkSize="2" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="btnTambah" linkSize="5" min="-2" pref="117" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtTglKembali" linkSize="2" min="-2" pref="137" max="-2" attributes="0"/>
-                                          <Component id="txtStatus" linkSize="2" min="-2" pref="150" max="-2" attributes="0"/>
+                                          <Component id="cbNopinjam" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jdTglkembali" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="btnhapus" linkSize="5" min="-2" pref="87" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="txtDenda" linkSize="6" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jrYa" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jrTidak" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -125,29 +134,40 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="notrans" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtNotrans" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnTambah" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="notrans" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNotrans" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnTambah" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="nopinjam" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbNopinjam" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Component id="tglkembali" linkSize="7" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="btnhapus" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="jdTglkembali" linkSize="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnhapus" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nopinjam" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtNopinjam" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="20" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtTglKembali" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tglkembali" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="status" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbStatus" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="status" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtStatus" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDenda" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jrYa" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jrTidak" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace pref="7" max="32767" attributes="0"/>
               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -234,10 +254,6 @@
         <Property name="text" type="java.lang.String" value="Status:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtStatus">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtNopinjam">
-    </Component>
     <Component class="javax.swing.JButton" name="btnTambah">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tambahkan"/>
@@ -276,15 +292,21 @@
             <Component class="javax.swing.JTable" name="TbKembali">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="4">
+                  <Table columnCount="5" rowCount="4">
                     <Column editable="true" title="No Transaksi" type="java.lang.Object"/>
                     <Column editable="true" title="Np Pinjam" type="java.lang.Object"/>
                     <Column editable="true" title="Tgl Kembali" type="java.lang.Object"/>
                     <Column editable="true" title="Status" type="java.lang.Object"/>
+                    <Column editable="true" title="Denda" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -319,11 +341,6 @@
         </Container>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="txtTglKembali">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTglKembaliActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="notrans">
       <Properties>
         <Property name="text" type="java.lang.String" value="No Transaksi:"/>
@@ -343,6 +360,61 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCariActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="jdTglkembali">
+      <Properties>
+        <Property name="maxSelectableDate" type="java.util.Date" editor="org.netbeans.beaninfo.editors.DateEditor">
+          <SerializedValue value="-84,-19,0,5,115,114,0,14,106,97,118,97,46,117,116,105,108,46,68,97,116,101,104,106,-127,1,75,89,116,25,3,0,0,120,112,119,8,0,0,-26,112,121,38,-124,72,120"/>
+        </Property>
+        <Property name="minSelectableDate" type="java.util.Date" editor="org.netbeans.beaninfo.editors.DateEditor">
+          <SerializedValue value="-84,-19,0,5,115,114,0,14,106,97,118,97,46,117,116,105,108,46,68,97,116,101,104,106,-127,1,75,89,116,25,3,0,0,120,112,119,8,-1,-1,-57,124,-30,62,68,72,120"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbStatus">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="Status"/>
+            <StringItem index="1" value="Tepat"/>
+            <StringItem index="2" value="Telat"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbStatusActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbNopinjam">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="1">
+            <StringItem index="0" value="No pinjam"/>
+          </StringArray>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txtDenda">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Denda:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jrYa">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="btnYatidak"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ya"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jrTidak">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="btnYatidak"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Tidak"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

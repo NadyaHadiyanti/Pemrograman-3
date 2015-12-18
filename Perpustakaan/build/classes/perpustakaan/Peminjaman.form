@@ -34,7 +34,7 @@
     </Menu>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="0"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
@@ -74,15 +74,15 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtTglPinjam" linkSize="1" min="-2" pref="134" max="-2" attributes="0"/>
                                   <Component id="txtKodebuku" linkSize="1" min="-2" pref="134" max="-2" attributes="0"/>
-                                  <Component id="txtHrsKembali" linkSize="1" min="-2" pref="134" max="-2" attributes="0"/>
+                                  <Component id="jdTglpinjam" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jdTglhakem" linkSize="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="nopinjam" linkSize="2" max="32767" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="txtNopinjam" linkSize="1" pref="118" max="32767" attributes="0"/>
+                              <Component id="txtNopinjam" linkSize="1" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="idanggota" linkSize="2" pref="134" max="32767" attributes="0"/>
@@ -126,30 +126,30 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnTambahkan" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="nopinjam" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtNopinjam" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNopinjam" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnUbah" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnOk" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="idanggota" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtIdanggota" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtIdanggota" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnHapus" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="kodebuku" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtKodebuku" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtKodebuku" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtTglPinjam" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tglpinjam" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="tglpinjam" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jdTglpinjam" linkSize="5" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtHrsKembali" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tglhrskembali" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="tglhrskembali" min="-2" max="-2" attributes="0"/>
+                  <Component id="jdTglhakem" linkSize="5" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -324,16 +324,6 @@
         <Property name="text" type="java.lang.String" value="&#xa9; copyright Nadya Hadiyanti (4513210027)"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtTglPinjam">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTglPinjamActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtHrsKembali">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHrsKembaliActionPerformed"/>
-      </Events>
-    </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -412,6 +402,10 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCariActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="jdTglpinjam">
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="jdTglhakem">
     </Component>
   </SubComponents>
 </Form>

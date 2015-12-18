@@ -7,6 +7,8 @@ package perpustakaan;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -29,9 +31,9 @@ public class Pengembalian extends javax.swing.JFrame {
     
     public void tambah() {
         txtNotrans.setText("");
-        txtNopinjam.setText("");
-        txtTglKembali.setText("");
-        txtStatus.setText("");
+        //cbNopinjam.setText("");
+        //jdTglKembali.setText("");
+        //cbStatus.setText("");
     }
     
     public Pengembalian() {
@@ -40,6 +42,7 @@ public class Pengembalian extends javax.swing.JFrame {
         setTitle("Data Pengembalian Buku");
         setLocationRelativeTo(null);
         tampil();
+        combo();
     }
 
     /**
@@ -51,6 +54,7 @@ public class Pengembalian extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnYatidak = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -60,19 +64,22 @@ public class Pengembalian extends javax.swing.JFrame {
         nopinjam = new javax.swing.JLabel();
         tglkembali = new javax.swing.JLabel();
         status = new javax.swing.JLabel();
-        txtStatus = new javax.swing.JTextField();
-        txtNopinjam = new javax.swing.JTextField();
         btnTambah = new javax.swing.JButton();
         btnhapus = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         TbKembali = new javax.swing.JTable();
-        txtTglKembali = new javax.swing.JTextField();
         notrans = new javax.swing.JLabel();
         txtNotrans = new javax.swing.JTextField();
         txtCari = new javax.swing.JTextField();
         btnCari = new javax.swing.JButton();
+        jdTglkembali = new com.toedter.calendar.JDateChooser();
+        cbStatus = new javax.swing.JComboBox();
+        cbNopinjam = new javax.swing.JComboBox();
+        txtDenda = new javax.swing.JLabel();
+        jrYa = new javax.swing.JRadioButton();
+        jrTidak = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnKembali = new javax.swing.JMenuItem();
@@ -140,13 +147,13 @@ public class Pengembalian extends javax.swing.JFrame {
 
         TbKembali.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "No Transaksi", "Np Pinjam", "Tgl Kembali", "Status"
+                "No Transaksi", "Np Pinjam", "Tgl Kembali", "Status", "Denda"
             }
         ));
         TbKembali.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -157,12 +164,6 @@ public class Pengembalian extends javax.swing.JFrame {
         jScrollPane1.setViewportView(TbKembali);
 
         jScrollPane2.setViewportView(jScrollPane1);
-
-        txtTglKembali.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTglKembaliActionPerformed(evt);
-            }
-        });
 
         notrans.setText("No Transaksi:");
 
@@ -178,6 +179,27 @@ public class Pengembalian extends javax.swing.JFrame {
                 btnCariActionPerformed(evt);
             }
         });
+
+        jdTglkembali.setMaxSelectableDate(new java.util.Date(253370743293000L));
+        jdTglkembali.setMinSelectableDate(new java.util.Date(-62135791107000L));
+
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Status", "Tepat", "Telat" }));
+        cbStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbStatusActionPerformed(evt);
+            }
+        });
+
+        cbNopinjam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No pinjam" }));
+        cbNopinjam.setToolTipText("");
+
+        txtDenda.setText("Denda:");
+
+        btnYatidak.add(jrYa);
+        jrYa.setText("Ya");
+
+        btnYatidak.add(jrTidak);
+        jrTidak.setText("Tidak");
 
         jMenu1.setText("Menu");
 
@@ -205,6 +227,7 @@ public class Pengembalian extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -215,10 +238,12 @@ public class Pengembalian extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel9))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -230,30 +255,33 @@ public class Pengembalian extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtNopinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(txtNotrans, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtTglKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addGap(45, 45, 45))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel9)))
-                .addContainerGap())
+                                            .addComponent(cbNopinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jdTglkembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(55, 55, 55))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtDenda)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jrYa)
+                        .addGap(18, 18, 18)
+                        .addComponent(jrTidak)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtNopinjam, txtNotrans, txtStatus, txtTglKembali});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cbNopinjam, cbStatus, jdTglkembali, txtNotrans});
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCari, btnTambah, btnhapus});
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {nopinjam, notrans, status, tglkembali});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {nopinjam, notrans, status, tglkembali, txtDenda});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,29 +295,38 @@ public class Pengembalian extends javax.swing.JFrame {
                     .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(notrans)
-                    .addComponent(txtNotrans, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTambah))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnhapus)
-                    .addComponent(nopinjam)
-                    .addComponent(txtNopinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTglKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tglkembali))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(notrans)
+                            .addComponent(txtNotrans, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnTambah))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(nopinjam)
+                                    .addComponent(cbNopinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(21, 21, 21)
+                                .addComponent(tglkembali))
+                            .addComponent(btnhapus)))
+                    .addComponent(jdTglkembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(status)
-                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                    .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDenda)
+                    .addComponent(jrYa)
+                    .addComponent(jrTidak))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(jLabel9))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtNopinjam, txtNotrans, txtStatus, txtTglKembali});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cbNopinjam, cbStatus, jdTglkembali, txtNotrans});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {nopinjam, notrans, status, tglkembali, txtDenda});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -312,32 +349,41 @@ public class Pengembalian extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mnLogoutActionPerformed
 
-    private void txtTglKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTglKembaliActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTglKembaliActionPerformed
-
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
         try {
             Connection kon = konek.getKoneksi();
-            if (txtNotrans.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "No Transaksi tidak boleh kosong");
-            } else if (txtNopinjam.getText().equals("")) {
+            Date tanggal = new Date();
+            SimpleDateFormat formatTk = new SimpleDateFormat("dd MMMM yyyy");
+            String k = formatTk.format(jdTglkembali.getDate());
+            String radioBtn = "";
+            
+            if (cbNopinjam.getSelectedItem().toString().equals("")) {
                 JOptionPane.showMessageDialog(null, "No Pinjam tidak boleh kosong");
-            } else if (txtTglKembali.getText().equals("")) {
+            } else if (jdTglkembali.getDate().equals("")) {
                 JOptionPane.showMessageDialog(null, "Tanggal kembali tidak boleh kosong");
-            } else if (txtStatus.getText().equals("")) {
+            } else if (cbStatus.getSelectedItem().toString().equals("")) {
                 JOptionPane.showMessageDialog(null, "Status tidak boleh kosong");
+            } else if ((jrYa.getAccessibleContext().equals("")) && (jrTidak.getAccessibleContext().equals(""))) {
+                JOptionPane.showMessageDialog(null, "Keterangan Denda tidak boleh kosong");
             } else {
-                String sql = "insert into pengembalian (no_transaksi, no_pinjam, tgl_kembali, status) values ('"+txtNotrans.getText()+"','"+txtNopinjam.getText()+"','"+txtTglKembali.getText()+"','"+txtStatus.getText()+"')";
-                stmt = kon.createStatement();
-                int banyak = stmt.executeUpdate(sql);
-                if (banyak>0) {
-                    JOptionPane.showMessageDialog(null, "Data Berhasil Tersimpan");
-                    txtNotrans.setText("");
-                    txtNopinjam.setText("");
-                    txtTglKembali.setText("");
-                    txtStatus.setText("");
+                if (jrYa.isSelected()) {
+                    radioBtn = jrYa.getText();
+                } else {
+                    radioBtn = jrTidak.getText();
                 }
+                
+                //String kode = "select * from where no_transaksi = '"+txtNotrans.getText();
+                String sql = "insert into pengembalian values('"+cbNopinjam.getSelectedItem().toString()+"','"+k+"','"
+                        +cbStatus.getSelectedItem().toString()+"','"+radioBtn+"')";
+                stmt = kon.createStatement();
+                stmt.executeUpdate(sql);
+            
+                    JOptionPane.showMessageDialog(null, "Data Berhasil Tersimpan");
+                    //txtNotrans.setText("");
+                    cbNopinjam.setSelectedIndex(0);
+                    jdTglkembali.setDate(tanggal);
+                    cbStatus.setSelectedIndex(0);
+                    btnYatidak.setSelected(null, rootPaneCheckingEnabled);
             }
             tampil();           
         } catch (Exception e) {
@@ -355,9 +401,6 @@ public class Pengembalian extends javax.swing.JFrame {
                 stmt.executeUpdate(sql);
                 JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
                 txtNotrans.setText("");
-                txtNopinjam.setText("");
-                txtTglKembali.setText("");
-                txtStatus.setText("");
                 tampil();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Data gagal dihapus");
@@ -370,12 +413,14 @@ public class Pengembalian extends javax.swing.JFrame {
             if (a >= 0) {
                 txtNotrans.setText(deta.getValueAt(a, 0).toString());
                 txtNotrans.setEditable(false);
-                txtNopinjam.setText(deta.getValueAt(a, 1).toString());
-                txtNopinjam.setEditable(false);
-                txtTglKembali.setText(deta.getValueAt(a, 2).toString());
-                txtTglKembali.setEditable(false);
-                txtStatus.setText(deta.getValueAt(a, 3).toString());
-                txtStatus.setEditable(false);
+                cbNopinjam.setSelectedItem(deta.getValueAt(a, 1).toString());
+                cbNopinjam.setEditable(false);
+                //jdTglkembali.setDate(deta.getValueAt(a, 2).toString());
+                //jdTglkembali.setEditable(false);
+                cbStatus.setSelectedItem(deta.getValueAt(a, 3).toString());
+                cbStatus.setEditable(false);
+                //btnYatidak.setSelected(null, rootPaneCheckingEnabled);
+                //btnYatidak.setEditable(false);
             }
     }//GEN-LAST:event_TbKembaliMouseClicked
 
@@ -390,9 +435,6 @@ public class Pengembalian extends javax.swing.JFrame {
             ResultSet rslt = stmt.executeQuery(sql);
             if (rslt.next()) {
                 txtNotrans.setText(rslt.getString("no_transaksi"));
-                txtNopinjam.setText(rslt.getString("no_pinjam"));
-                txtTglKembali.setText(rslt.getString("tgl_kembali"));
-                txtStatus.setText(rslt.getString("status"));
                 }
             }
         catch (Exception e){
@@ -401,14 +443,42 @@ public class Pengembalian extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCariActionPerformed
 
+    private void combo(){
+        try {
+            Connection kon = konek.getKoneksi();
+            Statement stmt = kon.createStatement();
+            String sql = "select * from pinjam";
+            ResultSet rslt = stmt.executeQuery(sql);
+            while (rslt.next()) {
+                cbNopinjam.addItem(rslt.getString("no_pinjam"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Terjadi Kesalahan" +e);
+        }
+    }
+    
+    private void cbStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbStatusActionPerformed
+        try {
+            Connection kon = konek.getKoneksi();
+            Statement stmt = kon.createStatement();
+            String sql = "select * from pinjam";
+            ResultSet rslt = stmt.executeQuery(sql);
+            while (rslt.next()) {
+                cbNopinjam.addItem(rslt.getString("no_pinjam"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Terjadi Kesalahan" +e);
+        }
+    }//GEN-LAST:event_cbStatusActionPerformed
+
     private void tampil(){
         try {
-        Object [] row =  {"No Transaksi","No Pinjam", "Tgl Kembali", "Status"};
+        Object [] row =  {"No Transaksi","No Pinjam", "Tgl Kembali", "Status", "Denda"};
         deta = new DefaultTableModel(null, row);
         TbKembali.setModel(deta);
         TbKembali.setBorder(null);
         jScrollPane2.setViewportView(TbKembali);
-        String notrans="",nopinjam="",tglkembali="",status="";
+        String notrans="",nopinjam="",tglkembali="",status="",denda="";
         try {
             Connection kon = konek.getKoneksi();
             String sql = "select * from pengembalian";
@@ -419,8 +489,9 @@ public class Pengembalian extends javax.swing.JFrame {
                 nopinjam = rslt.getString("no_pinjam");
                 tglkembali = rslt.getString("tgl_kembali");
                 status = rslt.getString("status");
+                denda = rslt.getString("denda");
                 
-                String [] muncul = {notrans,nopinjam,tglkembali,status};
+                String [] muncul = {notrans,nopinjam,tglkembali,status,denda};
                 deta.addRow(muncul);
             }
         } catch (Exception e) {
@@ -471,7 +542,10 @@ public class Pengembalian extends javax.swing.JFrame {
     private javax.swing.JTable TbKembali;
     private javax.swing.JButton btnCari;
     private javax.swing.JButton btnTambah;
+    private javax.swing.ButtonGroup btnYatidak;
     private javax.swing.JButton btnhapus;
+    private javax.swing.JComboBox cbNopinjam;
+    private javax.swing.JComboBox cbStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -483,6 +557,9 @@ public class Pengembalian extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private com.toedter.calendar.JDateChooser jdTglkembali;
+    private javax.swing.JRadioButton jrTidak;
+    private javax.swing.JRadioButton jrYa;
     private javax.swing.JMenuItem mnKembali;
     private javax.swing.JMenuItem mnLogout;
     private javax.swing.JLabel nopinjam;
@@ -490,9 +567,7 @@ public class Pengembalian extends javax.swing.JFrame {
     private javax.swing.JLabel status;
     private javax.swing.JLabel tglkembali;
     private javax.swing.JTextField txtCari;
-    private javax.swing.JTextField txtNopinjam;
+    private javax.swing.JLabel txtDenda;
     private javax.swing.JTextField txtNotrans;
-    private javax.swing.JTextField txtStatus;
-    private javax.swing.JTextField txtTglKembali;
     // End of variables declaration//GEN-END:variables
 }

@@ -27,7 +27,7 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         konek = new Koneksi();
-        setTitle("Home Perpustakaan");
+        setTitle("Menu Utama Admin Perpustakaan");
         setLocationRelativeTo(null);
         
     }

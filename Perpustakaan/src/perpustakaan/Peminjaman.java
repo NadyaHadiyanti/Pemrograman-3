@@ -7,7 +7,8 @@ package perpustakaan;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -25,6 +26,7 @@ public class Peminjaman extends javax.swing.JFrame {
     public PreparedStatement pps;
     public ResultSet rslt;
     private DefaultTableModel deta;
+    Date tanggal = new Date();
     
     Koneksi konek;
     
@@ -32,8 +34,8 @@ public class Peminjaman extends javax.swing.JFrame {
         txtNopinjam.setText("");
         txtIdanggota.setText("");
         txtKodebuku.setText("");
-        txtTglPinjam.setText("");
-        txtHrsKembali.setText("");
+        jdTglpinjam.setDate(tanggal);
+        jdTglhakem.setDate(tanggal);
     }
     
     public Peminjaman() {
@@ -71,19 +73,19 @@ public class Peminjaman extends javax.swing.JFrame {
         btnOk = new javax.swing.JButton();
         btnHapus = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        txtTglPinjam = new javax.swing.JTextField();
-        txtHrsKembali = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         TbPinjam = new javax.swing.JTable();
         btnCari = new javax.swing.JButton();
         txtCari = new javax.swing.JTextField();
+        jdTglpinjam = new com.toedter.calendar.JDateChooser();
+        jdTglhakem = new com.toedter.calendar.JDateChooser();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnKembali = new javax.swing.JMenuItem();
         mnLogout = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 255, 102));
 
@@ -173,18 +175,6 @@ public class Peminjaman extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
         jLabel9.setText("© copyright Nadya Hadiyanti (4513210027)");
 
-        txtTglPinjam.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTglPinjamActionPerformed(evt);
-            }
-        });
-
-        txtHrsKembali.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHrsKembaliActionPerformed(evt);
-            }
-        });
-
         TbPinjam.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -265,13 +255,13 @@ public class Peminjaman extends javax.swing.JFrame {
                                     .addComponent(tglhrskembali, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTglPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtKodebuku, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtHrsKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jdTglpinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jdTglhakem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(nopinjam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtNopinjam, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                                .addComponent(txtNopinjam))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(idanggota, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -295,7 +285,7 @@ public class Peminjaman extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtHrsKembali, txtIdanggota, txtKodebuku, txtNopinjam, txtTglPinjam});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jdTglhakem, jdTglpinjam, txtIdanggota, txtKodebuku, txtNopinjam});
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {idanggota, kodebuku, nopinjam, tglhrskembali, tglpinjam});
 
@@ -322,13 +312,13 @@ public class Peminjaman extends javax.swing.JFrame {
                     .addComponent(kodebuku)
                     .addComponent(txtKodebuku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTglPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tglpinjam))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tglpinjam)
+                    .addComponent(jdTglpinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtHrsKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tglhrskembali))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tglhrskembali)
+                    .addComponent(jdTglhakem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCari)
@@ -340,6 +330,10 @@ public class Peminjaman extends javax.swing.JFrame {
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCari, txtCari});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jdTglhakem, jdTglpinjam, txtKodebuku});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtIdanggota, txtNopinjam});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -355,11 +349,16 @@ public class Peminjaman extends javax.swing.JFrame {
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         try {
             Connection kon = konek.getKoneksi();
+            Date tanggal = new Date();
+            SimpleDateFormat formatTl = new SimpleDateFormat("dd MMMM yyyy");
+            //String p = formatTk.format(jdTglpinjam.getDate());
+            //String h = formatTk.format(jdTglpinjam.getDate());
+            
             String value1 = txtNopinjam.getText();
             String value2 = txtIdanggota.getText();
             String value3 = txtKodebuku.getText();
-            String value4 = txtTglPinjam.getText();
-            String value5 = txtHrsKembali.getText();
+            String value4 = formatTl.format(jdTglpinjam.getDate());
+            String value5 = formatTl.format(jdTglhakem.getDate());
             
             String sql = "update pinjam set id_anggota='"+value2+"',kode_buku='"+value3
                     +"',tgl_pinjam='"+value4+"',tgl_hrskembali='"+value5+"' where no_pinjam='"+value1+"'";
@@ -395,34 +394,33 @@ public class Peminjaman extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mnLogoutActionPerformed
 
-    private void txtHrsKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHrsKembaliActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtHrsKembaliActionPerformed
-
     private void btnTambahkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahkanActionPerformed
         try {
             Connection kon = konek.getKoneksi();
+            Date tanggal = new Date();
+            SimpleDateFormat formatTl = new SimpleDateFormat("dd MMMM yyyy");
+            String p = formatTl.format(jdTglpinjam.getDate());
+            String h = formatTl.format(jdTglhakem.getDate());
+            
             if (txtNopinjam.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "No Pinjam tidak boleh kosong");
             } else if (txtIdanggota.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Id Anggota tidak boleh kosong");
             } else if (txtKodebuku.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Kode Buku tidak boleh kosong");
-            } else if (txtTglPinjam.getText().equals("")) {
+            } else if (jdTglpinjam.getDate().equals("")) {
                 JOptionPane.showMessageDialog(null, "Tanggal Pinjam tidak boleh kosong");
-            } else if (txtHrsKembali.getText().equals("")) {
+            } else if (jdTglhakem.getDate().equals("")) {
                 JOptionPane.showMessageDialog(null, "Tanggal harus kembali tidak boleh kosong");
             } else {
-                String sql = "insert into pinjam (no_pinjam, id_anggota, kode_buku, tgl_pinjam, tgl_hrskembali) values ('"+txtNopinjam.getText()+"','"+txtIdanggota.getText()+"','"+txtKodebuku.getText()+"','"+txtTglPinjam.getText()+"','"+txtHrsKembali.getText()+"')";
+                String sql = "insert into pinjam (no_pinjam, id_anggota, kode_buku, tgl_pinjam, tgl_hrskembali) values ('"
+                        +txtNopinjam.getText()+"','"+txtIdanggota.getText()+"','"+txtKodebuku.getText()+"','"
+                        +p+"','"+h+"')";
                 stmt = kon.createStatement();
                 int banyak = stmt.executeUpdate(sql);
                 if (banyak>0) {
                     JOptionPane.showMessageDialog(null, "Data Berhasil Tersimpan");
-                    txtNopinjam.setText("");
-                    txtIdanggota.setText("");
-                    txtKodebuku.setText("");
-                    txtTglPinjam.setText("");
-                    txtHrsKembali.setText("");
+                    tambah();
                 }
             }
             tampil();           
@@ -472,11 +470,7 @@ public class Peminjaman extends javax.swing.JFrame {
                 Statement stmt = kon.createStatement();
                 stmt.executeUpdate(sql);
                 JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
-                txtNopinjam.setText("");
-                txtIdanggota.setText("");
-                txtKodebuku.setText("");
-                txtTglPinjam.setText("");
-                txtHrsKembali.setText("");
+                tambah();
                 tampil();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Data gagal dihapus");
@@ -494,10 +488,10 @@ public class Peminjaman extends javax.swing.JFrame {
                 txtIdanggota.setEditable(false);
                 txtKodebuku.setText(deta.getValueAt(a, 2).toString());
                 txtKodebuku.setEditable(false);
-                txtTglPinjam.setText(deta.getValueAt(a, 3).toString());
-                txtTglPinjam.setEditable(false);
-                txtHrsKembali.setText(deta.getValueAt(a, 4).toString());
-                txtHrsKembali.setEditable(false);
+                //jdTglpinjam.setDate(deta.getValueat(a, 3).toString());
+                //jdTglpinjam.setEditable(false);
+                //jdTglhakem.setText(deta.getValueAt(a, 4).toString());
+                //jdTglhakem.setEditable(false);
             }
         //}
     }//GEN-LAST:event_TbPinjamMouseClicked
@@ -506,13 +500,9 @@ public class Peminjaman extends javax.swing.JFrame {
         //txtNopinjam.setEditable(true);
         txtIdanggota.setEditable(true);
         txtKodebuku.setEditable(true);
-        txtTglPinjam.setEditable(true);
-        txtHrsKembali.setEditable(true);
+        //jdTglpinjam.setEditable(true);
+        //jdTglhakem.setEditable(true);
     }//GEN-LAST:event_btnUbahActionPerformed
-
-    private void txtTglPinjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTglPinjamActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTglPinjamActionPerformed
 
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
         try{
@@ -523,8 +513,8 @@ public class Peminjaman extends javax.swing.JFrame {
                 txtNopinjam.setText(rslt.getString("no_pinjam"));
                 txtIdanggota.setText(rslt.getString("id_anggota"));
                 txtKodebuku.setText(rslt.getString("kode_buku"));
-                txtTglPinjam.setText(rslt.getString("tgl_pinjam"));
-                txtHrsKembali.setText(rslt.getString("tgl_hrskembali"));
+                jdTglpinjam.setDate(rslt.getDate("tgl_pinjam"));
+                jdTglhakem.setDate(rslt.getDate("tgl_hrskembali"));
                 
                 //deta.addRow(new Object[]{
                    // rslt.getString(1),
@@ -597,6 +587,8 @@ public class Peminjaman extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private com.toedter.calendar.JDateChooser jdTglhakem;
+    private com.toedter.calendar.JDateChooser jdTglpinjam;
     private javax.swing.JLabel kodebuku;
     private javax.swing.JMenuItem mnKembali;
     private javax.swing.JMenuItem mnLogout;
@@ -604,10 +596,8 @@ public class Peminjaman extends javax.swing.JFrame {
     private javax.swing.JLabel tglhrskembali;
     private javax.swing.JLabel tglpinjam;
     private javax.swing.JTextField txtCari;
-    private javax.swing.JTextField txtHrsKembali;
     public javax.swing.JTextField txtIdanggota;
     public javax.swing.JTextField txtKodebuku;
     public javax.swing.JTextField txtNopinjam;
-    private javax.swing.JTextField txtTglPinjam;
     // End of variables declaration//GEN-END:variables
 }

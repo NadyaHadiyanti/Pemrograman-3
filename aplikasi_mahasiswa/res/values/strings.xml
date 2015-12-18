@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Aplikasi-Mahasiswa</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_list_item_mhs">List_item_mhs</string>
+    <string name="title_activity_mahasiswa">Mahasiswa</string>
+
+</resources>
